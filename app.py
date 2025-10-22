@@ -1,5 +1,6 @@
 import gradio as gr
 import accountService
+import charactersService
 
 
 # ========== Gradio 界面构建 ==========
@@ -119,14 +120,14 @@ with gr.Blocks(title="蛔虫君经典旧世", theme=gr.themes.Default()) as app:
 
     # 查询按钮事件
     search_btn.click(
-        fn=accountService.get_all_characters,
+        fn=charactersService.get_all_characters,
         inputs=[character_name_filter, online_status_filter],
         outputs=[character_table]
     )
 
     # 标签页切换事件 - 当切换到角色查询标签页时自动执行查询
     character_query_tab.select(
-        fn=accountService.get_all_characters,
+        fn=charactersService.get_all_characters,
         inputs=[character_name_filter, online_status_filter],
         outputs=[character_table]
     )
